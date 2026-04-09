@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LangContext';
+import robotImg from '@/assets/robot2.png';
 
 type EaseTuple = [number, number, number, number];
 const ease: EaseTuple = [0.22, 1, 0.36, 1];
@@ -16,15 +17,20 @@ const ProblemsSection = () => {
   const { t } = useLang();
 
   const problems = [
-    t('Заявки приходят, но часть сливается', 'Mijozlar oqimi bor, ammo ko\'p qismi yo\'q bo\'lib qoladi'),
+    t('Заявки приходят, но часть сливается', "Mijozlar oqimi bor, ammo ko'p qismi yo'q bo'lib qoladi"),
     t('Отвечаем долго', 'Uzoq javoblar'),
-    t('Менеджеры тратят много времени на холодных клиентов', 'Menedjerlar ulgurishmaydi va ko\'p vaqtni sovuq mijozlarga sarflashadi'),
+    t('Менеджеры тратят много времени на холодных клиентов', "Menedjerlar ulgurishmaydi va ko'p vaqtni sovuq mijozlarga sarflashadi"),
     t('Менеджеры не успевают отвечать всем, устают, забывают', 'Menedjerlar ulgurishmaydi, charchashadi, unutishadi'),
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-secondary/50">
-      <div className="container">
+    <section className="py-12 md:py-16 bg-secondary/50 relative overflow-hidden">
+      {/* Robot decoration */}
+      <div className="absolute right-0 bottom-0 w-[200px] opacity-[0.04] pointer-events-none">
+        <img src={robotImg} alt="" className="w-full" />
+      </div>
+
+      <div className="container relative z-10">
         <motion.h2
           initial="hidden" whileInView="visible" viewport={{ once: true }}
           variants={fadeUp} custom={0}
@@ -66,7 +72,7 @@ const ProblemsSection = () => {
           <p className="highlight-text text-xl md:text-2xl">
             {t(
               'Каждый пропущенный или поздний ответ = потерянная продажа',
-              'Har bir qoldirilgan yoki kechiktirilgan javob = yo\'qotilgan sotuv'
+              "Har bir qoldirilgan yoki kechiktirilgan javob = yo'qotilgan sotuv"
             )}
           </p>
           <p className="text-muted-foreground">

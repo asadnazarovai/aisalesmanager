@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LangContext';
+import { getVisitorId } from '@/lib/visitorId';
+import robotImg from '@/assets/robot3.png';
 
 interface Message {
   role: 'bot' | 'user';
@@ -14,7 +16,7 @@ const ChatDemo = () => {
       role: 'bot',
       text: t(
         'Для тестирования вы можете поговорить с нашим ИИ Менеджером по Продажам',
-        'Test sifatida bizning AI Sotuv Menejerimiz bilan gaplashib ko\'ring'
+        "Test sifatida bizning AI Sotuv Menejerimiz bilan gaplashib ko'ring"
       ),
     },
   ]);
@@ -28,7 +30,7 @@ const ChatDemo = () => {
         role: 'bot',
         text: lang === 'ru'
           ? 'Для тестирования вы можете поговорить с нашим ИИ Менеджером по Продажам'
-          : 'Test sifatida bizning AI Sotuv Menejerimiz bilan gaplashib ko\'ring',
+          : "Test sifatida bizning AI Sotuv Menejerimiz bilan gaplashib ko'ring",
       },
     ]);
   }, [lang]);
@@ -45,24 +47,30 @@ const ChatDemo = () => {
     setLoading(true);
 
     try {
+      const visitorId = getVisitorId();
       const res = await fetch('https://n8n.srv1215497.hstgr.cloud/webhook/fordemo', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMsg }),
+        body: JSON.stringify({ message: userMsg, visitorId }),
       });
       const data = await res.json();
       const botReply = typeof data === 'string' ? data : (data.reply || data.message || data.output || JSON.stringify(data));
       setMessages(prev => [...prev, { role: 'bot', text: botReply }]);
     } catch {
-      setMessages(prev => [...prev, { role: 'bot', text: t('Ошибка соединения. Попробуйте позже.', 'Xatolik yuz berdi. Keyinroq urinib ko\'ring.') }]);
+      setMessages(prev => [...prev, { role: 'bot', text: t('Ошибка соединения. Попробуйте позже.', "Xatolik yuz berdi. Keyinroq urinib ko'ring.") }]);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section className="py-12 md:py-16">
-      <div className="container">
+    <section className="py-12 md:py-16 relative overflow-hidden">
+      {/* Robot decoration */}
+      <div className="absolute right-0 top-0 w-[250px] opacity-[0.05] pointer-events-none">
+        <img src={robotImg} alt="" className="w-full" />
+      </div>
+
+      <div className="container relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
           {/* Left - Description */}
           <motion.div
@@ -72,12 +80,12 @@ const ChatDemo = () => {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           >
             <span className="text-gradient text-sm font-bold uppercase tracking-widest">
-              {t('Попробуйте сами', 'O\'zingiz sinab ko\'ring')}
+              {t('Попробуйте сами', "O'zingiz sinab ko'ring")}
             </span>
             <h2 className="highlight-text text-2xl md:text-3xl mt-4 mb-4">
               {t(
                 'Протестируйте AI Sales Manager в действии',
-                'AI Sotuv Menejerni sinab ko\'ring'
+                "AI Sotuv Menejerni sinab ko'ring"
               )}
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -96,7 +104,6 @@ const ChatDemo = () => {
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           >
             <div className="glass-surface rounded-2xl overflow-hidden shadow-xl">
-              {/* Header */}
               <div className="glass-button px-5 py-3 flex items-center gap-3">
                 <div className="w-9 h-9 rounded-full bg-primary-foreground/20 flex items-center justify-center">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-foreground">
@@ -112,7 +119,6 @@ const ChatDemo = () => {
                 </div>
               </div>
 
-              {/* Messages */}
               <div className="h-80 overflow-y-auto p-4 space-y-3 bg-background">
                 {messages.map((msg, i) => (
                   <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -141,7 +147,6 @@ const ChatDemo = () => {
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Input */}
               <div className="p-3 border-t border-border bg-background flex gap-2">
                 <input
                   type="text"
