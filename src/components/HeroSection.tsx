@@ -8,13 +8,13 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Robot background - full screen, close up */}
-      <div className="absolute inset-0 flex items-end justify-center pointer-events-none select-none">
+      <div className="absolute inset-0 pointer-events-none select-none">
         <motion.img
           src={robotImg}
           alt=""
-          className="h-[90vh] md:h-[95vh] w-auto max-w-none object-contain opacity-[0.09]"
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.09 }}
+          className="w-full h-full object-cover opacity-[0.14]"
+          initial={{ scale: 1.08, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.14 }}
           transition={{ duration: 1.5, ease: 'easeOut' }}
         />
       </div>

@@ -5,7 +5,7 @@ const TodaySection = () => {
   const { t } = useLang();
 
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-12 md:py-16">
       <div className="container">
         <motion.p
           initial={{ opacity: 0, y: 30 }}

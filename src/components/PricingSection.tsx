@@ -23,7 +23,7 @@ const PricingSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-12 md:py-16">
       <div className="container">
         <div className="max-w-lg mx-auto">
           <motion.div
