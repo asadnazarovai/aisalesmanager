@@ -21,11 +21,7 @@ const Index = () => {
         <ProblemsSection />
         <SolutionSection />
         <HowItWorksSection />
-        <div className="py-4 bg-secondary/50">
-          <div className="container">
-            <ChatDemo />
-          </div>
-        </div>
+        <ChatDemo />
         <ResultsSection />
         <CasesSection />
         <PricingSection />

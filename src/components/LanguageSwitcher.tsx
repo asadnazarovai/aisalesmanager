@@ -4,26 +4,28 @@ const LanguageSwitcher = () => {
   const { lang, setLang } = useLang();
 
   return (
-    <div className="fixed top-6 right-6 z-50 flex gap-2">
+    <div className="fixed top-6 right-6 z-50 flex rounded-full border border-border bg-card/80 backdrop-blur-md overflow-hidden shadow-sm">
       <button
         onClick={() => setLang('ru')}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
+        className={`flex items-center justify-center w-10 h-10 text-lg transition-all duration-300 ${
           lang === 'ru'
-            ? 'glass-button text-primary-foreground'
-            : 'bg-secondary text-secondary-foreground hover:bg-muted'
+            ? 'glass-button rounded-full scale-105'
+            : 'hover:bg-muted'
         }`}
+        aria-label="Русский"
       >
-        🇷🇺 <span>RU</span>
+        🇷🇺
       </button>
       <button
         onClick={() => setLang('uz')}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
+        className={`flex items-center justify-center w-10 h-10 text-lg transition-all duration-300 ${
           lang === 'uz'
-            ? 'glass-button text-primary-foreground'
-            : 'bg-secondary text-secondary-foreground hover:bg-muted'
+            ? 'glass-button rounded-full scale-105'
+            : 'hover:bg-muted'
         }`}
+        aria-label="O'zbek"
       >
-        🇺🇿 <span>UZ</span>
+        🇺🇿
       </button>
     </div>
   );

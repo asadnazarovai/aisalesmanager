@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LangContext';
 
+type EaseTuple = [number, number, number, number];
+const ease: EaseTuple = [0.22, 1, 0.36, 1];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
-    transition: { delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }
+    transition: { delay: i * 0.12, duration: 0.6, ease }
   }),
 };
 
@@ -53,14 +56,15 @@ const HowItWorksSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-secondary/50">
-      <div className="container">
+    <section className="py-20 md:py-28 section-navy relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/[0.02] to-transparent pointer-events-none" />
+      <div className="container relative z-10">
         <motion.div
           initial="hidden" whileInView="visible" viewport={{ once: true }}
           variants={fadeUp} custom={0}
           className="text-center mb-16"
         >
-          <h2 className="highlight-text">
+          <h2 className="text-2xl md:text-3xl font-bold text-white/95">
             {t('Как это работает', 'U qanday ishlaydi')}
           </h2>
         </motion.div>
@@ -71,17 +75,17 @@ const HowItWorksSection = () => {
               key={i}
               initial="hidden" whileInView="visible" viewport={{ once: true }}
               variants={fadeUp} custom={i + 1}
-              className="glass-card rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-start gap-4"
+              className="rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-start gap-4 bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm"
             >
               <div className="w-12 h-12 rounded-xl glass-button flex items-center justify-center flex-shrink-0 text-primary-foreground">
                 {step.icon}
               </div>
               <div className="flex-1 grid md:grid-cols-2 gap-4">
                 <div>
-                  <p className="text-foreground font-semibold">{step.left}</p>
+                  <p className="text-white/90 font-semibold">{step.left}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground">{step.right}</p>
+                  <p className="text-white/60">{step.right}</p>
                 </div>
               </div>
             </motion.div>
@@ -91,7 +95,7 @@ const HowItWorksSection = () => {
         <motion.p
           initial="hidden" whileInView="visible" viewport={{ once: true }}
           variants={fadeUp} custom={6}
-          className="text-center text-muted-foreground mt-8 text-sm"
+          className="text-center text-white/50 mt-8 text-sm"
         >
           {t('Это повышает вероятность продажи', 'Bu sotuv ehtimolini oshiradi')}
         </motion.p>

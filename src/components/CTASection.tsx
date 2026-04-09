@@ -11,10 +11,10 @@ const CTASection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="glass-surface rounded-3xl p-10 md:p-16 text-center max-w-3xl mx-auto"
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+          className="glass-navy rounded-3xl p-10 md:p-16 text-center max-w-3xl mx-auto relative overflow-hidden"
         >
-          <h2 className="highlight-text text-2xl md:text-3xl mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-white/95 mb-8 leading-tight relative z-10">
             {t(
               'Не теряйте больше деньги с потерянными заявками. Внедрите AI Sales Manager прямо сейчас и начните обрабатывать каждого клиента мгновенно.',
               'Mijozlar va sotuvni yo\'qotishni bas qiling. Hoziroq AI Sotuv Menejerini sotib oling va sotuvlaringizni oshiring.'
@@ -22,7 +22,7 @@ const CTASection = () => {
           </h2>
           <motion.a
             href="#solution"
-            className="glass-button inline-flex items-center gap-2 px-10 py-4 rounded-xl text-primary-foreground font-semibold text-lg transition-all duration-300"
+            className="glass-button glass-shimmer inline-flex items-center gap-2 px-10 py-4 rounded-xl text-primary-foreground font-semibold text-lg transition-all duration-300 relative z-10"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

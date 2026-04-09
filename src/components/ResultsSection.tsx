@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LangContext';
 
+type EaseTuple = [number, number, number, number];
+const ease: EaseTuple = [0.22, 1, 0.36, 1];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
-    transition: { delay: i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }
+    transition: { delay: i * 0.08, duration: 0.6, ease }
   }),
 };
 
@@ -20,19 +23,20 @@ const ResultsSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28">
-      <div className="container">
+    <section className="py-20 md:py-28 section-navy relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.015] to-transparent pointer-events-none" />
+      <div className="container relative z-10">
         <motion.h2
           initial="hidden" whileInView="visible" viewport={{ once: true }}
           variants={fadeUp} custom={0}
-          className="highlight-text text-center mb-4"
+          className="text-2xl md:text-3xl font-bold text-white/95 text-center mb-4"
         >
           {t('Результат', 'Natija')}
         </motion.h2>
         <motion.p
           initial="hidden" whileInView="visible" viewport={{ once: true }}
           variants={fadeUp} custom={1}
-          className="text-center text-muted-foreground mb-12 max-w-xl mx-auto"
+          className="text-center text-white/50 mb-12 max-w-xl mx-auto"
         >
           {t(
             'Высокий сервис обслуживания даже в соцсетях. Больше лидов. Больше продаж. Больше прибыли.',
@@ -46,10 +50,10 @@ const ResultsSection = () => {
               key={i}
               initial="hidden" whileInView="visible" viewport={{ once: true }}
               variants={fadeUp} custom={i + 2}
-              className="glass-surface rounded-xl p-6 text-center"
+              className="rounded-xl p-6 text-center bg-white/[0.04] border border-white/[0.08]"
             >
-              <p className="text-gradient text-3xl md:text-4xl font-bold mb-2">{r.value}</p>
-              <p className="text-sm text-muted-foreground">{r.label}</p>
+              <p className="text-3xl md:text-4xl font-bold mb-2 text-white">{r.value}</p>
+              <p className="text-sm text-white/50">{r.label}</p>
             </motion.div>
           ))}
         </div>
