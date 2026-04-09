@@ -7,16 +7,26 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Robot background */}
-      <div className="absolute right-0 bottom-0 w-[40%] max-w-[500px] opacity-[0.12] pointer-events-none select-none">
-        <img src={robotImg} alt="" className="w-full h-auto" />
+      {/* Robot background - full screen, close up */}
+      <div className="absolute inset-0 flex items-end justify-center pointer-events-none select-none">
+        <motion.img
+          src={robotImg}
+          alt=""
+          className="h-[90vh] md:h-[95vh] w-auto max-w-none object-contain opacity-[0.09]"
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.09 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+        />
       </div>
+
+      {/* Subtle navy gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background pointer-events-none" />
 
       <div className="container relative z-10 py-24 md:py-32">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           className="max-w-3xl"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-surface mb-8">
@@ -47,7 +57,7 @@ const HeroSection = () => {
 
           <motion.a
             href="#solution"
-            className="glass-button inline-flex items-center gap-2 px-8 py-4 rounded-xl text-primary-foreground font-semibold text-lg transition-all duration-300"
+            className="glass-button glass-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-xl text-primary-foreground font-semibold text-lg transition-all duration-300"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

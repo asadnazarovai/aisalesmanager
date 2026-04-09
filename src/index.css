@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,39 +6,45 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 20% 10%;
+    --background: 220 30% 97%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 199 100% 48%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 222 80% 28%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 200 20% 96%;
-    --secondary-foreground: 220 20% 10%;
+    --secondary: 220 25% 94%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 210 20% 96%;
+    --muted: 220 20% 92%;
     --muted-foreground: 220 10% 46%;
 
-    --accent: 199 100% 48%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 222 80% 28%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
-    --ring: 199 100% 48%;
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 222 80% 28%;
 
     --radius: 0.75rem;
 
-    --glass-blue: linear-gradient(135deg, hsl(199 100% 48%), hsl(210 100% 56%), hsl(199 100% 52%));
-    --glass-blue-hover: linear-gradient(135deg, hsl(199 100% 42%), hsl(210 100% 50%), hsl(199 100% 46%));
-    --glass-shine: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.15) 100%);
+    --navy: 222 80% 28%;
+    --navy-light: 222 60% 38%;
+    --navy-dark: 222 90% 18%;
+    --navy-glow: 210 100% 45%;
+
+    --glass-blue: linear-gradient(135deg, hsl(222 80% 28%), hsl(222 60% 34%), hsl(210 80% 32%));
+    --glass-blue-hover: linear-gradient(135deg, hsl(222 80% 22%), hsl(222 60% 28%), hsl(210 80% 26%));
+    --glass-shine: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.2) 100%);
+    --glass-liquid: linear-gradient(160deg, rgba(255,255,255,0.15) 0%, transparent 40%, rgba(255,255,255,0.08) 80%, transparent 100%);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -66,9 +72,17 @@
     background: var(--glass-blue);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 24px -4px hsl(199 100% 48% / 0.4),
-                0 1px 3px hsl(199 100% 48% / 0.2),
-                inset 0 1px 0 rgba(255,255,255,0.3);
+    box-shadow: 0 4px 24px -4px hsl(222 80% 28% / 0.5),
+                0 1px 3px hsl(222 80% 28% / 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -1px 0 rgba(0,0,0,0.15);
+  }
+  .glass-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--glass-liquid);
+    pointer-events: none;
   }
   .glass-button::after {
     content: '';
@@ -79,25 +93,44 @@
   }
   .glass-button:hover {
     background: var(--glass-blue-hover);
-    box-shadow: 0 8px 32px -4px hsl(199 100% 48% / 0.5),
-                0 2px 6px hsl(199 100% 48% / 0.3),
-                inset 0 1px 0 rgba(255,255,255,0.4);
+    box-shadow: 0 8px 40px -4px hsl(222 80% 28% / 0.6),
+                0 2px 8px hsl(222 80% 28% / 0.35),
+                inset 0 1px 0 rgba(255,255,255,0.4),
+                inset 0 -1px 0 rgba(0,0,0,0.2);
   }
 
   .glass-card {
-    background: linear-gradient(135deg, hsl(199 100% 48% / 0.04), hsl(210 100% 56% / 0.02));
-    border: 1px solid hsl(199 100% 48% / 0.1);
-    backdrop-filter: blur(12px);
+    background: linear-gradient(145deg, hsl(222 80% 28% / 0.04), hsl(210 60% 40% / 0.02));
+    border: 1px solid hsl(222 80% 28% / 0.1);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 2px 12px -2px hsl(222 80% 28% / 0.06);
   }
 
   .glass-surface {
-    background: linear-gradient(135deg, hsl(199 100% 48% / 0.06), hsl(210 100% 56% / 0.03));
-    border: 1px solid hsl(199 100% 48% / 0.12);
-    box-shadow: 0 4px 16px -2px hsl(199 100% 48% / 0.08);
+    background: linear-gradient(145deg, hsl(222 80% 28% / 0.06), hsl(210 60% 40% / 0.03));
+    border: 1px solid hsl(222 80% 28% / 0.12);
+    box-shadow: 0 4px 24px -4px hsl(222 80% 28% / 0.1),
+                0 1px 2px hsl(222 80% 28% / 0.04);
+  }
+
+  .glass-navy {
+    background: linear-gradient(145deg, hsl(222 80% 16%), hsl(222 70% 20%), hsl(210 60% 22%));
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 40px -8px hsl(222 80% 12% / 0.6),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                inset 0 -1px 0 rgba(0,0,0,0.2);
+  }
+  .glass-navy::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(255,255,255,0.08) 0%, transparent 50%, rgba(255,255,255,0.04) 100%);
+    pointer-events: none;
   }
 
   .text-gradient {
-    background: var(--glass-blue);
+    background: linear-gradient(135deg, hsl(222 80% 28%), hsl(210 100% 45%), hsl(222 60% 38%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -106,5 +139,27 @@
   .highlight-text {
     @apply text-2xl md:text-3xl font-bold leading-tight;
     color: hsl(var(--foreground));
+  }
+
+  .section-navy {
+    background: linear-gradient(180deg, hsl(222 80% 14%), hsl(222 70% 18%));
+    color: hsl(210 40% 98%);
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .glass-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+    animation: shimmer 3s ease-in-out infinite;
+    pointer-events: none;
   }
 }

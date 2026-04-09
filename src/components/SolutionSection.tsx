@@ -2,11 +2,6 @@ import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LangContext';
 import robotImg from '@/assets/robot.png';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
-};
-
 const SolutionSection = () => {
   const { t } = useLang();
 
@@ -17,8 +12,10 @@ const SolutionSection = () => {
       </div>
       <div className="container relative z-10">
         <motion.div
-          initial="hidden" whileInView="visible" viewport={{ once: true }}
-          variants={fadeUp}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           className="text-center mb-8"
         >
           <span className="text-gradient text-lg font-semibold tracking-wide uppercase">
@@ -26,8 +23,10 @@ const SolutionSection = () => {
           </span>
         </motion.div>
         <motion.h2
-          initial="hidden" whileInView="visible" viewport={{ once: true }}
-          variants={fadeUp}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           className="highlight-text text-center max-w-3xl mx-auto"
         >
           {t(
