@@ -6,7 +6,7 @@ const SolutionSection = () => {
   const { t } = useLang();
 
   return (
-    <section id="solution" className="py-20 md:py-28 relative overflow-hidden">
+    <section id="solution" className="py-12 md:py-16 relative overflow-hidden">
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] opacity-[0.06] pointer-events-none">
         <img src={robotImg} alt="" className="w-full" />
       </div>

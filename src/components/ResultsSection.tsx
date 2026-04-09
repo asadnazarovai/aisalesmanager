@@ -23,7 +23,7 @@ const ResultsSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 section-navy relative overflow-hidden">
+    <section className="py-12 md:py-16 section-navy relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.015] to-transparent pointer-events-none" />
       <div className="container relative z-10">
         <motion.h2
