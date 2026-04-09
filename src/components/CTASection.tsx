@@ -1,12 +1,18 @@
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LangContext';
+import robotImg from '@/assets/robot4.png';
 
 const CTASection = () => {
   const { t } = useLang();
 
   return (
-    <section className="py-12 md:py-16">
-      <div className="container">
+    <section className="py-12 md:py-16 relative overflow-hidden">
+      {/* Robot decoration */}
+      <div className="absolute left-0 bottom-0 w-[220px] opacity-[0.06] pointer-events-none">
+        <img src={robotImg} alt="" className="w-full" />
+      </div>
+
+      <div className="container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -17,7 +23,7 @@ const CTASection = () => {
           <h2 className="text-2xl md:text-3xl font-bold text-white/95 mb-8 leading-tight relative z-10">
             {t(
               'Не теряйте больше деньги с потерянными заявками. Внедрите AI Sales Manager прямо сейчас и начните обрабатывать каждого клиента мгновенно.',
-              'Mijozlar va sotuvni yo\'qotishni bas qiling. Hoziroq AI Sotuv Menejerini sotib oling va sotuvlaringizni oshiring.'
+              "Mijozlar va sotuvni yo'qotishni bas qiling. Hoziroq AI Sotuv Menejerini sotib oling va sotuvlaringizni oshiring."
             )}
           </h2>
           <motion.a
