@@ -61,7 +61,7 @@ const ChatDemo = () => {
   };
 
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-12 md:py-16">
       <div className="container">
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
           {/* Left - Description */}
