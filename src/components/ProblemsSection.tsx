@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LangContext';
-import robotImg from '@/assets/robot2.png';
+import robotImg from '@/assets/robot8.png';
 
 type EaseTuple = [number, number, number, number];
 const ease: EaseTuple = [0.22, 1, 0.36, 1];
@@ -25,9 +25,9 @@ const ProblemsSection = () => {
 
   return (
     <section className="py-12 md:py-16 bg-secondary/50 relative overflow-hidden">
-      {/* Robot decoration */}
-      <div className="absolute right-0 bottom-0 w-[200px] opacity-[0.04] pointer-events-none">
-        <img src={robotImg} alt="" className="w-full" />
+      {/* Robot - left side, large */}
+      <div className="absolute left-[-40px] top-1/2 -translate-y-1/2 w-[350px] md:w-[450px] opacity-[0.15] pointer-events-none select-none">
+        <img src={robotImg} alt="" className="w-full h-auto" />
       </div>
 
       <div className="container relative z-10">

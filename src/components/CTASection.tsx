@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LangContext';
-import robotImg from '@/assets/robot4.png';
+import robotImg from '@/assets/robot7.png';
 
 const CTASection = () => {
   const { t } = useLang();
 
   return (
     <section className="py-12 md:py-16 relative overflow-hidden">
-      {/* Robot decoration */}
-      <div className="absolute left-0 bottom-0 w-[220px] opacity-[0.06] pointer-events-none">
-        <img src={robotImg} alt="" className="w-full" />
+      {/* Robot - left side, large */}
+      <div className="absolute left-[-50px] bottom-0 w-[350px] md:w-[450px] opacity-[0.15] pointer-events-none select-none">
+        <img src={robotImg} alt="" className="w-full h-auto" />
       </div>
 
       <div className="container relative z-10">
