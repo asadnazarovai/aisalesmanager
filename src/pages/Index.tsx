@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { LangProvider } from '@/contexts/LangContext';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import HeroSection from '@/components/HeroSection';
@@ -12,6 +13,9 @@ import PricingSection from '@/components/PricingSection';
 import CTASection from '@/components/CTASection';
 
 const Index = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <LangProvider>
       <div className="min-h-screen bg-background">
