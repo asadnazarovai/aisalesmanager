@@ -14,7 +14,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/aisalesmanager">
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
@@ -27,4 +27,3 @@ const App = () => (
 );
 
 export default App;
-
