@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LangContext';
 import { getVisitorId } from '@/lib/visitorId';
-import robotImg from '@/assets/robot3.png';
+import robotImg from '@/assets/robot7.png';
 
 interface Message {
   role: 'bot' | 'user';
@@ -65,9 +65,9 @@ const ChatDemo = () => {
 
   return (
     <section className="py-12 md:py-16 relative overflow-hidden">
-      {/* Robot decoration */}
-      <div className="absolute right-0 top-0 w-[250px] opacity-[0.05] pointer-events-none">
-        <img src={robotImg} alt="" className="w-full" />
+      {/* Robot decoration - right side */}
+      <div className="absolute right-[-40px] top-1/2 -translate-y-1/2 w-[300px] md:w-[400px] opacity-[0.12] pointer-events-none select-none">
+        <img src={robotImg} alt="" className="w-full h-auto" />
       </div>
 
       <div className="container relative z-10">

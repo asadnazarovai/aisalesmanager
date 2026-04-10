@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LangContext';
+import robotImg from '@/assets/robot5.png';
 
 type EaseTuple = [number, number, number, number];
 const ease: EaseTuple = [0.22, 1, 0.36, 1];
@@ -23,8 +24,13 @@ const PricingSection = () => {
   ];
 
   return (
-    <section className="py-12 md:py-16">
-      <div className="container">
+    <section className="py-12 md:py-16 relative overflow-hidden">
+      {/* Robot - right side */}
+      <div className="absolute right-[-60px] top-1/2 -translate-y-1/2 w-[350px] md:w-[420px] opacity-[0.12] pointer-events-none select-none">
+        <img src={robotImg} alt="" className="w-full h-auto" />
+      </div>
+
+      <div className="container relative z-10">
         <div className="max-w-lg mx-auto">
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }}

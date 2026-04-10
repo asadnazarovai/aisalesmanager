@@ -1,15 +1,17 @@
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LangContext';
-import robotImg from '@/assets/robot.png';
+import robotImg from '@/assets/robot5.png';
 
 const SolutionSection = () => {
   const { t } = useLang();
 
   return (
     <section id="solution" className="py-12 md:py-16 relative overflow-hidden">
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] opacity-[0.06] pointer-events-none">
-        <img src={robotImg} alt="" className="w-full" />
+      {/* Robot - right side, large and visible */}
+      <div className="absolute right-[-60px] top-1/2 -translate-y-1/2 w-[400px] md:w-[500px] opacity-[0.18] pointer-events-none select-none">
+        <img src={robotImg} alt="" className="w-full h-auto" />
       </div>
+
       <div className="container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
