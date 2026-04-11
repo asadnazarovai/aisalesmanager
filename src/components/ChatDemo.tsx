@@ -128,7 +128,7 @@ const ChatDemo = () => {
                 </div>
               </div>
 
-              <div className="h-80 overflow-y-auto p-4 space-y-3 bg-background">
+              <div ref={messagesContainerRef} className="h-80 overflow-y-auto p-4 space-y-3 bg-background">
                 {messages.map((msg, i) => (
                   <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div
