@@ -153,7 +153,7 @@ const ChatDemo = () => {
                     </div>
                   </div>
                 )}
-                <div ref={messagesEndRef} />
+                
               </div>
 
               <div className="p-3 border-t border-border bg-background flex gap-2">
