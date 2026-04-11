@@ -22,7 +22,8 @@ const ChatDemo = () => {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     setMessages([
@@ -33,10 +34,18 @@ const ChatDemo = () => {
           : "Test sifatida bizning AI Sotuv Menejerimiz bilan gaplashib ko'ring",
       },
     ]);
+    isFirstRender.current = true;
   }, [lang]);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    const container = messagesContainerRef.current;
+    if (container) {
+      container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+    }
   }, [messages]);
 
   const sendMessage = async () => {
@@ -119,7 +128,7 @@ const ChatDemo = () => {
                 </div>
               </div>
 
-              <div className="h-80 overflow-y-auto p-4 space-y-3 bg-background">
+              <div ref={messagesContainerRef} className="h-80 overflow-y-auto p-4 space-y-3 bg-background">
                 {messages.map((msg, i) => (
                   <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div
@@ -144,7 +153,7 @@ const ChatDemo = () => {
                     </div>
                   </div>
                 )}
-                <div ref={messagesEndRef} />
+                
               </div>
 
               <div className="p-3 border-t border-border bg-background flex gap-2">
